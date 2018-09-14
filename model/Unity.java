@@ -2,9 +2,8 @@ package model;
 
 public class Unity extends SaleType {
 
-	public Unity(int id, String name, String acronym) {
-		super(id, name, acronym);
-		
+	public Unity() {
+		super(3, "Unidade", "U");
 	}
 
 }

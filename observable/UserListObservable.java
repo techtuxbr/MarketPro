@@ -37,7 +37,7 @@ public class UserListObservable extends Observable{
 	
 	public User getUserByID(String id) {
 		for(int i = 0; i < users.size();i++) {
-			if(users.get(i).getId() == id) {
+			if(users.get(i).getId().equals(id)) {
 				return users.get(i);
 			}
 		}

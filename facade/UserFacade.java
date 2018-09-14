@@ -41,7 +41,6 @@ public class UserFacade{
 			}
 		}
 		
-		
 		if(user == null) {
 			throw new WrongUsername("Nome de usuario incorreto");
 		}

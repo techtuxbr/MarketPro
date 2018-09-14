@@ -23,7 +23,9 @@ public class FileHelper<T>{
 		if(!this.file.exists()) {
 			try {
 				this.file.createNewFile();
-			}catch(IOException e) {	
+				this.writeData(new ArrayList<T>());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

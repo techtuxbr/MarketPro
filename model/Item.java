@@ -1,26 +1,27 @@
 package model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Item {
+public class Item implements Serializable{
 	
 	private String name;
 	private String barCode = UUID.randomUUID().toString();
 	private Brand brand;
 	private int inStock;
 	private float price;
-	private Type type;
+	private Category type;
 	
-	public Item(String name, Brand brand, int inStock, float price, Type type) {
+	public Item(String name, String barCode, Brand brand, int inStock, float price, Category type) {
 		super();
 		this.name = name;
+		this.barCode = barCode;
 		this.brand = brand;
 		this.inStock = inStock;
 		this.price = price;
 		this.type = type;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -53,15 +54,24 @@ public class Item {
 		this.price = price;
 	}
 	
-	public Type getType() {
+	public Category getType() {
 		return type;
 	}
 	
-	public void setType(Type type) {
+	public void setType(Category type) {
 		this.type = type;
 	}
 	
 	public String getBarCode() {
 		return barCode;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Item [name=" + name + ", barCode=" + barCode + ", brand=" + brand + ", inStock=" + inStock + ", price="
+				+ price + ", type=" + type + "]";
+	}
+	
+	
+	
 }

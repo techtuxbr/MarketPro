@@ -7,16 +7,16 @@ import model.User;
 
 public class UserListObserver implements Observer{
 
-	private Observable userList;
+	private UserListObservable userList;
 	
-	public UserListObserver(Observable userList) {
+	public UserListObserver(UserListObservable userList) {
 		this.userList = userList;
 		this.userList.addObserver(this);
 	}
 	
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("Algo aconteceu na lista");
+		//System.out.println("Algo aconteceu na lista");
 		FileHelper fh = new FileHelper<User>("users.bin");
 		fh.writeData(((UserListObservable)this.userList).getUsers());
 	}

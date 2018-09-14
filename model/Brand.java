@@ -1,13 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Brand {
-	private String id = UUID.randomUUID().toString();
+public class Brand implements Serializable{
+	private String id;
 	private String name;
 	
-	public Brand(String name) {
+	public Brand(String id,String name) {
 		super();
+		this.id = id;
 		this.name = name;
 	}
 
@@ -22,4 +24,11 @@ public class Brand {
 	public String getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + "]";
+	}
+	
+	
 }

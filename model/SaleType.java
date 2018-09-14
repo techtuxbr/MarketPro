@@ -1,6 +1,8 @@
 package model;
 
-public class SaleType {
+import java.io.Serializable;
+
+public class SaleType implements Serializable{
 	protected int id;
 	protected String name;
 	protected String acronym;
