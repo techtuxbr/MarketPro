@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import exceptions.CategoryNotFound;
 import factory.CategoryFactory;
 import model.Category;
 import model.SaleType;
@@ -49,7 +50,7 @@ public class CategoriesListObservable extends Observable {
 			}
 	}
 	
-	public void updateByID(String id, String name, SaleType saleType) {
+	public void updateByID(String id, String name, SaleType saleType){
 		Category c = this.getCategoryByID(id);
 		if(c != null) {
 			Category cTemp = this.categories.get(this.categories.indexOf(c));

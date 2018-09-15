@@ -72,6 +72,4 @@ public class Item implements Serializable{
 				+ price + ", type=" + type + "]";
 	}
 	
-	
-	
 }

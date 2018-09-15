@@ -5,7 +5,7 @@ import java.util.UUID;
 import model.Category;
 import model.SaleType;
 
-public class CategoryFactory implements CategoryCreator{
+public class CategoryFactory extends Factory implements CategoryCreator{
 
 	@Override
 	public Category create(String name, SaleType saleType) {

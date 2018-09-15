@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import model.Brand;
 
-public class BrandFactory implements BrandCreator {
+public class BrandFactory extends Factory implements BrandCreator {
 	@Override
 	public Brand create(String name) {
 		return new Brand(UUID.randomUUID().toString(),name);
