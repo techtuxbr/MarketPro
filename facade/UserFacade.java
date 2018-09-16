@@ -62,9 +62,16 @@ public class UserFacade{
 	
 	public static User get(String id) throws NullData {
 		if(id == null) {
-			throw new NullData("O seu parametro id � nulo");
+			throw new NullData("O seu parametro id é nulo");
 		}
 		return UserListSingleton.getInstance().getUserByID(id);
+	}
+
+	public static User getByUsername(String username)throws NullData{
+		if(username == null) {
+			throw new NullData("O seu parametro username é nulo");
+		}
+		return UserListSingleton.getInstance().getUserByUsername(username);
 	}
 	
 	public static User remove(String id) throws NullData{

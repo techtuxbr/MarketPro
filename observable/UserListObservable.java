@@ -43,6 +43,15 @@ public class UserListObservable extends Observable{
 		}
 		return null;
 	}
+
+	public User getUserByUsername(String username) {
+		for(int i = 0; i < users.size();i++) {
+			if(users.get(i).getUsername().equalsIgnoreCase(username)) {
+				return users.get(i);
+			}
+		}
+		return null;
+	}
 	
 	public void removeByID(String id) {
 			User u = this.getUserByID(id);

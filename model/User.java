@@ -45,8 +45,11 @@ public class User implements Serializable{
 	}
 	
 	public void setUsername(String username) {
-		if (!username.isEmpty()) this.username = username;
-		else this.username = "default";
+		if(!username.isEmpty()){
+			this.username = username;
+		}else{
+			this.username = "default";
+		}
 	}
 	
 	public String getPassword() {
@@ -54,8 +57,7 @@ public class User implements Serializable{
 	}
 	
 	public void setPassword(String password) {
-		if (!password.isEmpty()) this.password = password;
-		else this.password = "default";
+		this.password = password;
 	}
 	
 	public int getType() {
