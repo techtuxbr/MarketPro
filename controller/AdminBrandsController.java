@@ -112,7 +112,12 @@ public class AdminBrandsController extends AdminDashboardController implements I
         if(searchField.getText().isEmpty()){
             brandsTable.setItems(brandsList());
         }else{
-            brandsTable.setItems(brandListSearched(searchField.getText()));
+            ObservableList<Brand> list = brandListSearched(searchField.getText());
+            if(list != null){
+                brandsTable.setItems(list);
+            }else{
+                brandsTable.getItems().clear();
+            }
         }
     }
 
@@ -150,7 +155,7 @@ public class AdminBrandsController extends AdminDashboardController implements I
             nullData.printStackTrace();
         }finally {
             if(finded == null){
-                return FXCollections.observableList(null);
+                return null;
             }else{
                 List<Brand> brandSearched = new ArrayList<Brand>();
                 brandSearched.add(finded);

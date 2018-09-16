@@ -35,5 +35,9 @@ public class SaleType implements Serializable{
 		if(!acronym.isEmpty())this.acronym = acronym;
 		else this.acronym = "default";
 	}
-	
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

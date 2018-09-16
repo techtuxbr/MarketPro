@@ -34,6 +34,16 @@ public class ItemListObservable extends Observable {
 		return tempItems;
 	}
 	
+	public List<Item> getItemsByBrand(String brand) {
+		List<Item> items = new ArrayList<Item>();
+		for(int i = 0; i < this.items.size();i++) {
+			if(this.items.get(i).getBrand().getName().equalsIgnoreCase(brand)) {
+				items.add(this.items.get(i));
+			}
+		}
+		return items;
+	}
+
 	public Item getItemByBarcode(String barcode) {
 		for(int i = 0; i < this.items.size();i++) {
 			if(this.items.get(i).getBarCode().equals(barcode)) {

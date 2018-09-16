@@ -2,14 +2,12 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -93,66 +91,41 @@
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <ChoiceBox layoutX="122.0" layoutY="87.0" prefHeight="25.0" prefWidth="648.0" />
                               <Text layoutX="28.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <ChoiceBox layoutX="122.0" layoutY="125.0" prefHeight="25.0" prefWidth="647.0" />
                               <Text layoutX="28.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <TextField layoutX="122.0" layoutY="44.0" prefHeight="30.0" prefWidth="650.0">
+                              <TextField fx:id="nameField" layoutX="122.0" layoutY="44.0" prefHeight="30.0" prefWidth="650.0">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </TextField>
-                              <Button layoutX="586.0" layoutY="477.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
-                              <Button layoutX="680.0" layoutY="477.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Limpar" />
-                              <Text layoutX="28.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade:">
+                              <Button layoutX="587.0" layoutY="439.0" mnemonicParsing="false" onAction="#saveProduct" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
+                              <Button layoutX="681.0" layoutY="439.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="42.0" prefWidth="87.0" text="Limpar" />
+                              <TextField fx:id="priceField" layoutX="142.0" layoutY="167.0" prefHeight="25.0" prefWidth="117.0" />
+                              <Text layoutX="28.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Venda:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <SplitMenuButton layoutX="122.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Selecione">
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Quilo" />
-                                  <MenuItem mnemonicParsing="false" text="Unidade" />
-                                </items>
-                              </SplitMenuButton>
-                              <TextField layoutX="409.0" layoutY="168.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="295.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Custo:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="653.0" layoutY="168.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="539.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Venda:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextArea layoutX="27.0" layoutY="294.0" prefHeight="162.0" prefWidth="740.0">
+                              <TextArea fx:id="notesField" layoutX="28.0" layoutY="256.0" prefHeight="162.0" prefWidth="740.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </TextArea>
-                              <Text layoutX="27.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações:">
+                              <Text layoutX="28.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <TextField layoutX="147.0" layoutY="209.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="28.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. Estoque:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="481.0" layoutY="209.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="294.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. mínima Estoque:">
+                              <TextField fx:id="inStockField" layoutX="406.0" layoutY="167.0" prefHeight="25.0" prefWidth="117.0" />
+                              <Text layoutX="287.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. Estoque:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
@@ -162,6 +135,8 @@
                                     <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-produto.png" />
                                  </image>
                               </ImageView>
+                              <ComboBox fx:id="categoriesComboBox" layoutX="125.0" layoutY="87.0" prefHeight="25.0" prefWidth="644.0" />
+                              <ComboBox fx:id="brandsComboBox" layoutX="126.0" layoutY="125.0" prefHeight="25.0" prefWidth="641.0" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -170,29 +145,21 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="578.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Editar" />
-                              <Button layoutX="672.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Excluir" />
-                              <TextField layoutX="196.0" layoutY="22.0" prefHeight="25.0" prefWidth="470.0" />
+                              <Button layoutX="578.0" layoutY="496.0" mnemonicParsing="false" onAction="#productSelected" prefHeight="42.0" prefWidth="87.0" text="Editar" />
+                              <Button layoutX="672.0" layoutY="496.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="42.0" prefWidth="87.0" text="Excluir" />
+                              <TextField fx:id="searchField" layoutX="196.0" layoutY="22.0" prefHeight="25.0" prefWidth="470.0" />
                               <Text layoutX="50.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Produto:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="678.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Pesquisar" />
-                              <TreeTableView layoutX="50.0" layoutY="68.0" prefHeight="163.0" prefWidth="716.0">
-                                <columns>
-                                  <TreeTableColumn prefWidth="123.0" text="Cód. Barras" />
-                                    <TreeTableColumn prefWidth="116.0" text="Categoria" />
-                                    <TreeTableColumn prefWidth="112.0" text="Marca" />
-                                  <TreeTableColumn prefWidth="364.0" text="Nome Produto" />
-                                </columns>
-                              </TreeTableView>
+                              <Button layoutX="678.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="42.0" prefWidth="87.0" text="Pesquisar" />
                               <Text layoutX="22.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <TextField layoutX="116.0" layoutY="258.0" prefHeight="30.0" prefWidth="650.0">
+                              <TextField fx:id="nameEditField" layoutX="116.0" layoutY="258.0" prefHeight="30.0" prefWidth="650.0">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -202,49 +169,36 @@
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <ChoiceBox layoutX="117.0" layoutY="303.0" prefHeight="25.0" prefWidth="648.0" />
-                              <Button layoutX="485.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
+                              <Button layoutX="485.0" layoutY="496.0" mnemonicParsing="false" onAction="#saveEditProduct" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
                               <Text layoutX="23.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <ChoiceBox layoutX="117.0" layoutY="343.0" prefHeight="25.0" prefWidth="647.0" />
-                              <Text layoutX="23.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade:">
+                              <TextField fx:id="priceEditField" layoutX="136.0" layoutY="401.0" prefHeight="25.0" prefWidth="117.0" />
+                              <Text layoutX="22.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Venda:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <SplitMenuButton layoutX="117.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Selecione">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Quilo" />
-                                    <MenuItem mnemonicParsing="false" text="Unidade" />
-                                 </items>
-                              </SplitMenuButton>
-                              <TextField layoutX="404.0" layoutY="385.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="290.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Custo:">
+                              <TextField fx:id="inStockEditField" layoutX="392.0" layoutY="401.0" prefHeight="25.0" prefWidth="117.0" />
+                              <Text layoutX="273.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. Estoque:">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Text>
-                              <TextField layoutX="648.0" layoutY="385.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="534.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Venda:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="142.0" layoutY="423.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="23.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. Estoque:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="476.0" layoutY="423.0" prefHeight="25.0" prefWidth="117.0" />
-                              <Text layoutX="289.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qnt. mínima Estoque:">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                              </Text>
+                              <TableView fx:id="productsTable" layoutX="24.0" layoutY="61.0" prefHeight="183.0" prefWidth="742.0">
+                                <columns>
+                                  <TableColumn fx:id="barcodeColumn" prefWidth="132.0" text="C. Barras" />
+                                  <TableColumn fx:id="nameColumn" prefWidth="192.0" text="Nome" />
+                                    <TableColumn fx:id="priceColumn" prefWidth="79.0" text="Preço" />
+                                    <TableColumn fx:id="inStockColumn" prefWidth="89.0" text="Estoque" />
+                                    <TableColumn fx:id="brandColumn" prefWidth="103.0" text="Marca" />
+                                    <TableColumn fx:id="categoryColumn" prefWidth="144.0" text="Categoria" />
+                                </columns>
+                              </TableView>
+                              <ComboBox fx:id="categoriesEditComboBox" layoutX="115.0" layoutY="303.0" prefHeight="25.0" prefWidth="650.0" />
+                              <ComboBox fx:id="brandsEditComboBox" layoutX="115.0" layoutY="343.0" prefHeight="25.0" prefWidth="649.0" />
                            </children></AnchorPane>
                   </content>
                 </TitledPane>

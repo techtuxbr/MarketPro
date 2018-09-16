@@ -26,27 +26,34 @@ public class ItemFacade {
 	
 	public static void register(Item i) throws ProductIDCollision, NullData{
 		if(i == null) {
-			throw new NullData("O item que você está tentando criar é nulo");
+			throw new NullData("O item que vocï¿½ estï¿½ tentando criar ï¿½ nulo");
 		}
 		Item iTemp = ItemListSingleton.getInstance().getItemByBarcode(i.getBarCode());
 		if(iTemp == null) {
 			ItemListSingleton.getInstance().insert(i);
 		}else {
-			throw new ProductIDCollision("O produto que você está tentando criar tem o mesmo ID de um produto já cadastrado\nInformações:\n Produto cadastrado: " + iTemp.toString() + " P à cadastrar: " + i.toString());
+			throw new ProductIDCollision("O produto que vocï¿½ estï¿½ tentando criar tem o mesmo ID de um produto jï¿½ cadastrado\nInformaï¿½ï¿½es:\n Produto cadastrado: " + iTemp.toString() + " P ï¿½ cadastrar: " + i.toString());
 		}
 	}
 	
 	public static Item get(String id) throws NullData {
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id Ã© nulo");
 		}
 		return ItemListSingleton.getInstance().getItemByBarcode(id);
+	}
+
+	public static List<Item> getByBrand(String brand) throws NullData {
+		if(brand == null) {
+			throw new NullData("O seu parametro id Ã© nulo");
+		}
+		return ItemListSingleton.getInstance().getItemsByBrand(brand);
 	}
 	
 	public static Item remove(String id) throws NullData{
 		Item iTemp;
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id ï¿½ nulo");
 		}
 		iTemp = ItemListSingleton.getInstance().getItemByBarcode(id);
 		ItemListSingleton.getInstance().removeByBarcode(id);
@@ -55,19 +62,19 @@ public class ItemFacade {
 	
 	public static void update(String id, String name, Brand brand,int inStock, float price, Category type) throws NullData, ItemNotFound, InvalidNegativeValue{
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id ï¿½ nulo");
 		}else if(name == null) {
-			throw new NullData("O seu parametro name é nulo");
+			throw new NullData("O seu parametro name ï¿½ nulo");
 		}else if(type == null) {
-			throw new NullData("O seu parametro Categoria é nulo");
+			throw new NullData("O seu parametro Categoria ï¿½ nulo");
 		}else if(inStock < 0) {
-			throw new InvalidNegativeValue("O valor do estoque não pode ser negativo");
+			throw new InvalidNegativeValue("O valor do estoque nï¿½o pode ser negativo");
 		}else if(price < 0) {
-			throw new InvalidNegativeValue("O valor do preço não pode ser negativo");
+			throw new InvalidNegativeValue("O valor do preï¿½o nï¿½o pode ser negativo");
 		}
 		
 		if(ItemListSingleton.getInstance().getItemByBarcode(id) == null) {
-			throw new ItemNotFound("Produto não existente, impossível atualizar! verifique o ID!");
+			throw new ItemNotFound("Produto nï¿½o existente, impossï¿½vel atualizar! verifique o ID!");
 		}else {
 			ItemListSingleton.getInstance().updateByBarcode(id, name, brand, inStock, price, type);
 		}

@@ -1,5 +1,6 @@
 package controller;
 
+import exceptions.CategoryIDCollision;
 import exceptions.CategoryNotFound;
 import exceptions.NullData;
 import facade.CategoryFacade;
@@ -10,8 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Category;
+import model.*;
 
 import javax.swing.*;
 import java.net.URL;
@@ -27,6 +29,8 @@ public class AdminCategoriesController extends AdminDashboardController implemen
     @FXML
     private TableColumn<Category, String> nameColumn;
     @FXML
+    TableColumn<Category, SaleType> saleTypeColumn;
+    @FXML
     private Button editButton;
     @FXML
     private TextField nameEditField;
@@ -36,19 +40,26 @@ public class AdminCategoriesController extends AdminDashboardController implemen
     private Button searchButton;
     @FXML
     private TextField searchField;
-    /*
+    @FXML
+    private ComboBox<String> comboBox;
+    @FXML
+    private ComboBox<String> comboBoxCreation;
     @FXML
     private TextField nameField;
     @FXML
     private TextArea notesField;
-    */
+
     private Category selectedCategory;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CategoryFactory bf = new CategoryFactory();
+        comboBox.setItems(FXCollections.observableArrayList("Quilograma - KG","Litro - L","Unidade - U"));
+        comboBoxCreation.setItems(FXCollections.observableArrayList("Quilograma - KG","Litro - L","Unidade - U"));
+        comboBox.getSelectionModel().selectFirst();
         idColumn.setCellValueFactory(new PropertyValueFactory<Category, String>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
+        saleTypeColumn.setCellValueFactory(new PropertyValueFactory<Category,SaleType>("saleType"));
         categoriesTable.setItems(categoriesList());
     }
 
@@ -63,6 +74,22 @@ public class AdminCategoriesController extends AdminDashboardController implemen
         selectedCategory = category;
         nameEditField.setText(category.getName());
         idEditField.setText(category.getId());
+        setUnitiesOrder(category.getSaleType());
+        System.out.println(category.getSaleType().toString());
+    }
+
+    private void setUnitiesOrder(SaleType type){
+        switch (type.getId()){
+            case 1:
+                comboBox.getSelectionModel().selectFirst();
+                break;
+            case 2:
+                comboBox.getSelectionModel().select(1);
+                break;
+            default:
+                comboBox.getSelectionModel().selectLast();
+                break;
+        }
     }
 
     private void despopulateFields(String message){
@@ -76,7 +103,17 @@ public class AdminCategoriesController extends AdminDashboardController implemen
     private void categoryEditSaved(ActionEvent event){
         if(selectedCategory != null){
             try {
-                CategoryFacade.update(selectedCategory.getId(),nameEditField.getText(),selectedCategory.getSaleType());
+                SaleType st;
+                int type = comboBox.getSelectionModel().getSelectedIndex();
+                System.out.println(type);
+                if(type == 0){
+                    st = new Kilogram();
+                }else if(type == 1){
+                    st = new Liter();
+                }else{
+                    st = new Unity();
+                }
+                CategoryFacade.update(selectedCategory.getId(),nameEditField.getText(),st);
                 categoriesTable.setItems(categoriesList());
             } catch (NullData nullData) {
                 JOptionPane.showMessageDialog(null,nullData.toString());
@@ -104,41 +141,59 @@ public class AdminCategoriesController extends AdminDashboardController implemen
         }
     }
 
-    /*
+
     @FXML
     private void searchAction(ActionEvent event){
+        System.out.println("Entrou");
         if(searchField.getText().isEmpty()){
-            brandsTable.setItems(brandsList());
+            System.out.println("Vazio");
+            categoriesTable.setItems(categoriesList());
         }else{
-            brandsTable.setItems(brandListSearched(searchField.getText()));
+            ObservableList<Category> list = categoriesListSearched(searchField.getText());
+            if(list != null){
+                categoriesTable.setItems(list);
+            }else{
+                categoriesTable.getItems().clear();
+            }
         }
     }
+
 
     @FXML void clearField(ActionEvent event){
         nameField.setText("");
         notesField.setText("");
     }
 
-    @FXML void saveBrandAction(ActionEvent event){
-        BrandFactory bf = new BrandFactory();
+    @FXML void saveCategoryAction(ActionEvent event){
+        CategoryFactory cf = new CategoryFactory();
         try {
-            BrandFacade.register(bf.create(nameField.getText()));
-            JOptionPane.showMessageDialog(null,"Marca criada com sucesso!");
+            SaleType st;
+            int type = comboBoxCreation.getSelectionModel().getSelectedIndex();
+            System.out.println(type);
+            if(type == 0){
+                st = new Kilogram();
+            }else if(type == 1){
+                st = new Liter();
+            }else{
+                st = new Unity();
+            }
+            CategoryFacade.register(cf.create(nameField.getText(),st));
+            JOptionPane.showMessageDialog(null,"Categoria criada com sucesso!");
             clearField(event);
-            brandsTable.setItems(brandsList());
-        } catch (BrandIDCollision brandIDCollision) {
-            JOptionPane.showMessageDialog(null,"Uma marca com o mesmo id já existe!");
+            categoriesTable.setItems(categoriesList());
+        } catch (CategoryIDCollision err) {
+            JOptionPane.showMessageDialog(null,"Uma categoria com o mesmo id já existe!");
         } catch (NullData nullData) {
-            JOptionPane.showMessageDialog(null,"Erro durante a criação da marca, tente novamente!");
+            JOptionPane.showMessageDialog(null,"Erro durante a criação da categoria, tente novamente!");
         }
     }
 
-*/
+
     private ObservableList<Category> categoriesList(){
         return FXCollections.observableList(CategoryFacade.getList());
     }
 
-    /*
+
     private ObservableList<Category> categoriesListSearched(String query){
         Category finded = null;
         try {
@@ -150,13 +205,12 @@ public class AdminCategoriesController extends AdminDashboardController implemen
             nullData.printStackTrace();
         }finally {
             if(finded == null){
-                return FXCollections.observableList(null);
+                return null;
             }else{
-                List<Brand> brandSearched = new ArrayList<Brand>();
-                brandSearched.add(finded);
-                return FXCollections.observableList(brandSearched);
+                List<Category> categorySearched = new ArrayList<Category>();
+                categorySearched.add(finded);
+                return FXCollections.observableList(categorySearched);
             }
         }
     }
-    */
 }
