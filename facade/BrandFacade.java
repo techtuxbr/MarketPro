@@ -47,6 +47,13 @@ public class BrandFacade {
 		}
 		return BrandListSingleton.getInstance().getBrandByID(id);
 	}
+
+	public static Brand getByName(String name) throws NullData {
+		if(name == null) {
+			throw new NullData("O seu parametro name é nulo");
+		}
+		return BrandListSingleton.getInstance().getBrandByName(name);
+	}
 	
 	public static Brand remove(String id) throws NullData{
 		Brand bTemp;

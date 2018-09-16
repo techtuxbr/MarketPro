@@ -45,6 +45,13 @@ public class CategoryFacade {
 		}
 		return CategoriesListSingleton.getInstance().getCategoryByID(id);
 	}
+
+	public static Category getByName(String name) throws NullData {
+		if(name == null) {
+			throw new NullData("O seu parametro id é nulo");
+		}
+		return CategoriesListSingleton.getInstance().getCategoryByName(name);
+	}
 	
 	public static Category remove(String id) throws NullData{
 		Category cTemp;

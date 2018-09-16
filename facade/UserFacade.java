@@ -35,7 +35,7 @@ public class UserFacade{
 		List<User> uList = UserListSingleton.getInstance().getUsers();
 		for(int i = 0; i < uList.size();i++) {
 			if(uList.get(i).getUsername().equals(u.getUsername())) {
-				throw new UsernameCollision("O nome de usuário já está em uso");
+				throw new UsernameCollision("O nome de usuï¿½rio jï¿½ estï¿½ em uso");
 			}
 		}
 		u.setPassword(HashHelper.hashInMD5(u.getPassword()));
@@ -50,11 +50,9 @@ public class UserFacade{
 				user = uList.get(i);
 			}
 		}
-		
 		if(user == null) {
 			throw new WrongUsername("Nome de usuario incorreto");
 		}
-		
 		if(HashHelper.comparePlainTextToMD5Hash(password, user.getPassword())) {
 			AuthHelper.authenticate(user);
 		}else {
@@ -64,7 +62,7 @@ public class UserFacade{
 	
 	public static User get(String id) throws NullData {
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id ï¿½ nulo");
 		}
 		return UserListSingleton.getInstance().getUserByID(id);
 	}
@@ -72,7 +70,7 @@ public class UserFacade{
 	public static User remove(String id) throws NullData{
 		User uTemp;
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id ï¿½ nulo");
 		}
 		uTemp = UserListSingleton.getInstance().getUserByID(id);
 		UserListSingleton.getInstance().removeByID(id);
@@ -81,16 +79,16 @@ public class UserFacade{
 	
 	public static void update(String id, String name, String username, String password, int type) throws NullData, UserNotFound{
 		if(id == null) {
-			throw new NullData("O seu parametro id é nulo");
+			throw new NullData("O seu parametro id ï¿½ nulo");
 		}else if(name == null) {
-			throw new NullData("O seu parametro name é nulo");
+			throw new NullData("O seu parametro name ï¿½ nulo");
 		}else if(username == null) {
-			throw new NullData("O seu parametro username é nulo");
+			throw new NullData("O seu parametro username ï¿½ nulo");
 		}else if(password == null) {
-			throw new NullData("O seu parametro password é nulo");
+			throw new NullData("O seu parametro password ï¿½ nulo");
 		}
 		if(UserListSingleton.getInstance().getUserByID(id) == null) {
-			throw new UserNotFound("Usuário não existente, impossível atualizar! verifique o ID!");
+			throw new UserNotFound("Usuï¿½rio nï¿½o existente, impossï¿½vel atualizar! verifique o ID!");
 		}else {
 			UserListSingleton.getInstance().updateByID(id, name, username, password, type);
 		}
@@ -99,7 +97,15 @@ public class UserFacade{
 	public static List<User> getList(){
 		return UserListSingleton.getInstance().getUsers();
 	}
-	
+
+	public static boolean isAdmin(){
+		return AuthHelper.isAdmin();
+	}
+
+	public static boolean isLogged(){
+		return AuthHelper.isLogged();
+	}
+
 	public static void printList() {
 		UserListSingleton.getInstance().getUsers().forEach(element -> {
 			System.out.println(element.toString());

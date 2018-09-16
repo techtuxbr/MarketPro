@@ -40,6 +40,15 @@ public class CategoriesListObservable extends Observable {
 		}
 		return null;
 	}
+
+	public Category getCategoryByName(String name) {
+		for(int i = 0; i < this.categories.size();i++) {
+			if(this.categories.get(i).getName().equals(name)) {
+				return this.categories.get(i);
+			}
+		}
+		return null;
+	}
 	
 	public void removeByID(String id) {
 			Category c = this.getCategoryByID(id);

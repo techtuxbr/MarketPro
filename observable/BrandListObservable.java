@@ -39,6 +39,15 @@ public class BrandListObservable extends Observable {
 		}
 		return null;
 	}
+
+	public Brand getBrandByName(String name) {
+		for(int i = 0; i < this.brands.size();i++) {
+			if(this.brands.get(i).getName().equalsIgnoreCase(name)) {
+				return this.brands.get(i);
+			}
+		}
+		return null;
+	}
 	
 	public void removeByID(String id) {
 			Brand b = this.getBrandByID(id);

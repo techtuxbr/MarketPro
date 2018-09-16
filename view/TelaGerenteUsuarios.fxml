@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUsersController">
+   <children>
+      <Pane prefHeight="720.0" prefWidth="1162.0" style="-fx-background-color: #dddbdb;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" layoutX="277.0" layoutY="704.0" stroke="TRANSPARENT" strokeType="INSIDE" width="885.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="4.0" layoutX="277.0" layoutY="697.0" stroke="TRANSPARENT" strokeType="INSIDE" width="885.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="277.0">
+               <effect>
+                  <DropShadow />
+               </effect></Rectangle>
+            <ImageView fitHeight="88.0" fitWidth="200.0" layoutX="44.0" layoutY="25.0">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="87.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versão 1.0.1" />
+            <Button fx:id="productsButton" layoutY="142.0" mnemonicParsing="false" onAction="#productsScene" prefHeight="84.0" prefWidth="277.0" text="Produtos   ">
+               <font>
+                  <Font name="Calibri Bold Italic" size="33.0" />
+               </font>
+            </Button>
+            <Button fx:id="categoriesButton" layoutY="248.0" mnemonicParsing="false" onAction="#categoriesScene" prefHeight="84.0" prefWidth="277.0" text="Categorias   ">
+               <font>
+                  <Font name="Calibri Bold Italic" size="33.0" />
+               </font>
+            </Button>
+            <Button fx:id="brandsButton" layoutY="355.0" mnemonicParsing="false" onAction="#brandsScene" prefHeight="84.0" prefWidth="277.0" text="Marcas   ">
+               <font>
+                  <Font name="Calibri Bold Italic" size="33.0" />
+               </font>
+            </Button>
+            <Button fx:id="usersButton" layoutY="462.0" mnemonicParsing="false" onAction="#usersScene" prefHeight="84.0" prefWidth="277.0" text="Usuários   ">
+               <font>
+                  <Font name="Calibri Bold Italic" size="33.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="225.0" layoutY="383.0">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-marca.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="45.0" layoutX="224.0" layoutY="165.0">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-produto.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="226.0" layoutY="487.0">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-usuario.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="46.0" layoutX="225.0" layoutY="279.0">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-categoria.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="255.0" fitWidth="580.0" layoutX="432.0" layoutY="256.0" opacity="0.11">
+               <image>
+                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="16.0" layoutY="703.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright: Victor e Washington" />
+            <Accordion layoutX="499.0" layoutY="253.0" />
+            <Accordion layoutX="321.0" layoutY="52.0" prefHeight="500.0" prefWidth="789.0">
+              <panes>
+                <TitledPane animated="false" text="Cadastrar">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="28.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="122.0" layoutY="76.0" prefHeight="30.0" prefWidth="650.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="590.0" layoutY="343.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
+                              <Button layoutX="684.0" layoutY="343.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Limpar" />
+                              <Text layoutX="28.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <SplitMenuButton layoutX="122.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Selecione">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Administrador" />
+                                  <MenuItem mnemonicParsing="false" text="Caixa" />
+                                </items>
+                              </SplitMenuButton>
+                              <Text layoutX="28.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="122.0" layoutY="122.0" prefHeight="30.0" prefWidth="650.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Text layoutX="28.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="350.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmação Senha:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <PasswordField layoutX="525.0" layoutY="169.0" prefHeight="25.0" prefWidth="246.0" />
+                              <PasswordField layoutX="97.0" layoutY="169.0" prefHeight="25.0" prefWidth="246.0" />
+                              <Text layoutX="294.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id. Usuario:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="395.0" layoutY="210.0" prefHeight="30.0" prefWidth="376.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="76.0" fitWidth="92.0" layoutX="25.0" layoutY="362.0">
+                                 <image>
+                                    <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-usuario.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="99.0" prefWidth="789.0" text="Listar">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="578.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Editar" />
+                              <Button layoutX="672.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Excluir" />
+                              <TextField layoutX="160.0" layoutY="22.0" prefHeight="25.0" prefWidth="506.0" />
+                              <Text layoutX="22.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Usuário:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="678.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Pesquisar" />
+                              <TreeTableView layoutX="20.0" layoutY="68.0" prefHeight="127.0" prefWidth="746.0">
+                                <columns>
+                                  <TreeTableColumn prefWidth="123.0" text="Id. Usuário" />
+                                  <TreeTableColumn prefWidth="622.0" text="Nome Usuário" />
+                                </columns>
+                              </TreeTableView>
+                              <Button layoutX="485.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Salvar" />
+                              <Text layoutX="22.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="116.0" layoutY="216.0" prefHeight="30.0" prefWidth="651.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Text layoutX="22.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <SplitMenuButton layoutX="116.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Selecione">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Administrador" />
+                                    <MenuItem mnemonicParsing="false" text="Caixa" />
+                                 </items>
+                              </SplitMenuButton>
+                              <Text layoutX="22.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="116.0" layoutY="262.0" prefHeight="30.0" prefWidth="650.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Text layoutX="22.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="344.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmação Senha:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <PasswordField layoutX="519.0" layoutY="309.0" prefHeight="25.0" prefWidth="246.0" />
+                              <PasswordField layoutX="91.0" layoutY="309.0" prefHeight="25.0" prefWidth="246.0" />
+                              <Text layoutX="288.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id. Usuario:">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="389.0" layoutY="350.0" prefHeight="30.0" prefWidth="376.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children></AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <Text layoutX="666.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuários">
+               <font>
+                  <Font name="Calibri" size="28.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
