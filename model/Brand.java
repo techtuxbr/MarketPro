@@ -10,7 +10,7 @@ public class Brand implements Serializable{
 	public Brand(String id,String name) {
 		super();
 		this.id = id;
-		this.name = name;
+		setName(name);
 	}
 
 	public String getName() {
@@ -18,7 +18,8 @@ public class Brand implements Serializable{
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		if(!name.isEmpty())this.name = name;
+		else this.name = "default";
 	}
 	
 	public String getId() {

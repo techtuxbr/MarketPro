@@ -14,12 +14,12 @@ public class Item implements Serializable{
 	
 	public Item(String name, String barCode, Brand brand, int inStock, float price, Category type) {
 		super();
-		this.name = name;
+		setName(name);
 		this.barCode = barCode;
-		this.brand = brand;
-		this.inStock = inStock;
-		this.price = price;
-		this.type = type;
+		setBrand(brand);
+		setInStock(inStock);
+		setPrice(price);
+		setType(type);
 	}
 
 	public String getName() {
@@ -27,7 +27,8 @@ public class Item implements Serializable{
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		if(!name.isEmpty())this.name = name;
+		else this.name = "default";
 	}
 	
 	public Brand getBrand() {
@@ -43,7 +44,8 @@ public class Item implements Serializable{
 	}
 	
 	public void setInStock(int inStock) {
-		this.inStock = inStock;
+		if(inStock>0)this.inStock = inStock;
+		else this.inStock = 0;
 	}
 	
 	public float getPrice() {
@@ -51,7 +53,8 @@ public class Item implements Serializable{
 	}
 	
 	public void setPrice(float price) {
-		this.price = price;
+		if (price>0) this.price = price;
+		else this.price = 0;
 	}
 	
 	public Category getType() {

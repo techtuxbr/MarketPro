@@ -13,8 +13,8 @@ public class Order implements Serializable {
 	public Order(String id, Calendar date, List<OrderItem> itemList) {
 		super();
 		this.id = id;
-		this.date = date;
-		this.itemList = itemList;
+		setDate(date);
+		setItemList(itemList);
 	}
 
 	public String getId() {
@@ -22,7 +22,8 @@ public class Order implements Serializable {
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		if(!id.isEmpty())this.id = id;
+		else this.id = "default";
 	}
 
 	public Calendar getDate() {

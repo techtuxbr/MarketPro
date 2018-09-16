@@ -11,15 +11,16 @@ public class Category implements Serializable{
 	public Category(String id, String name, SaleType saleType) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.saleType = saleType;
+		setName(name);
+		setSaleType(saleType);
 	}
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		if(!name.isEmpty())this.name = name;
+		else this.name = "default";
 	}
 	public SaleType getSaleType() {
 		return saleType;

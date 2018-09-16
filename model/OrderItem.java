@@ -10,9 +10,9 @@ public class OrderItem implements Serializable{
 	
 	public OrderItem(Item item, float total, float amount) {
 		super();
-		this.item = item;
-		this.total = total;
-		this.amount = amount;
+		setItem(item);
+		setTotal(total);
+		setAmount(amount);
 	}
 
 	public Item getItem() {
@@ -28,7 +28,8 @@ public class OrderItem implements Serializable{
 	}
 
 	public void setTotal(float total) {
-		this.total = total;
+		if (total>0)this.total = total;
+		else this.total = 0;
 	}
 
 	public float getAmount() {
@@ -36,7 +37,8 @@ public class OrderItem implements Serializable{
 	}
 
 	public void setAmount(float amount) {
-		this.amount = amount;
+		if (amount>0) this.amount = amount;
+		else this.amount = 0;
 	}
 
 }

@@ -10,27 +10,30 @@ public class SaleType implements Serializable{
 	public SaleType(int id, String name, String acronym) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.acronym = acronym;
+		setName(name);
+		setAcronym(acronym);
 	}
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		if(!(id<1 || id>3))this.id = id;
+		else this.id = -1;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		if(!name.isEmpty())this.name = name;
+		else this.name = "default";
 	}
 	public String getAcronym() {
 		return acronym;
 	}
 	public void setAcronym(String acronym) {
-		this.acronym = acronym;
+		if(!acronym.isEmpty())this.acronym = acronym;
+		else this.acronym = "default";
 	}
 	
 }

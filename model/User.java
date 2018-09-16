@@ -12,19 +12,19 @@ public class User implements Serializable{
 	
 	public User(String name, String username, String password, int type) {
 		super();
-		this.name = name;
-		this.username = username;
-		this.password = password;
-		this.type = type;
+		setName(name);
+		setUsername(username);
+		setPassword(password);
+		setType(type);
 	}
 
 	public User(String id, String name, String username, String password, int type) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.username = username;
-		this.password = password;
-		this.type = type;
+		setName(name);
+		setUsername(username);
+		setPassword(password);
+		setType(type);
 	}
 	
 	public User() {
@@ -36,7 +36,8 @@ public class User implements Serializable{
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		if (!name.isEmpty()) this.name = name;
+		else this.name = "default";
 	}
 	
 	public String getUsername() {
@@ -44,7 +45,8 @@ public class User implements Serializable{
 	}
 	
 	public void setUsername(String username) {
-		this.username = username;
+		if (!username.isEmpty()) this.username = username;
+		else this.username = "default";
 	}
 	
 	public String getPassword() {
@@ -52,7 +54,8 @@ public class User implements Serializable{
 	}
 	
 	public void setPassword(String password) {
-		this.password = password;
+		if (!password.isEmpty()) this.password = password;
+		else this.password = "default";
 	}
 	
 	public int getType() {
@@ -60,7 +63,8 @@ public class User implements Serializable{
 	}
 	
 	public void setType(int type) {
-		this.type = type;
+		if (type==0 || type==1)this.type = type;
+		else this.type = 0;
 	}
 	public String getId() {
 		return id;
@@ -68,7 +72,9 @@ public class User implements Serializable{
 	
 
 	public void setId(String id) {
-		this.id = id;
+		if(id != null){
+			this.id = id;
+		}
 	}
 
 	@Override
