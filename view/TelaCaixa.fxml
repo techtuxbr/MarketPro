@@ -26,13 +26,13 @@
                </effect></Rectangle>
             <ImageView fitHeight="88.0" fitWidth="200.0" layoutX="44.0" layoutY="569.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+                  <Image url="/resources/logo.png" />
                </image>
             </ImageView>
             <Text layoutX="87.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versão 1.0.1" />
             <ImageView fitHeight="53.0" fitWidth="134.0" layoutX="713.0" layoutY="566.0" opacity="0.11">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+                  <Image url="/resources/logo.png" />
                </image>
             </ImageView>
             <Text layoutX="78.0" layoutY="687.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright: Victor e Washington">
@@ -63,7 +63,7 @@
             </Text>
             <ImageView fitHeight="109.0" fitWidth="120.0" layoutX="172.0" layoutY="173.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-produto.png" />
+                  <Image url="/resources/icone-produto.png" />
                </image>
             </ImageView>
             <Button layoutX="1003.0" layoutY="566.0" mnemonicParsing="false" onAction="#endOrder" prefHeight="38.0" prefWidth="102.0" text="Finalizar Venda" />

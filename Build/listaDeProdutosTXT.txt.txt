@@ -1,0 +1,8 @@
+Item [name=Energético RedBull, barCode=81cde834-d7f4-4c74-afee-d1fd3c36f582, brand=Redbull, inStock=120, price=8.0, type=Bebidas]
+Item [name=Filé, barCode=3f820783-42d3-4241-9379-2ad0df128ef4, brand=Friboi, inStock=780, price=12.0, type=Carnes]
+Item [name=Doce de leite, barCode=092168ae-dbf4-4a3f-b595-96f1fa59e567, brand=Batavo, inStock=25, price=4.0, type=Doces]
+Item [name=Doritos, barCode=c80120d9-7b27-4d10-9ff2-8fadd47412b9, brand=ElmaChips, inStock=120, price=5.0, type=Salgadinhos]
+Item [name=Ruffles grande, barCode=0c4aad47-9eff-4c31-81f7-0534b09cd186, brand=ElmaChips, inStock=1276, price=8.0, type=Salgadinhos]
+Item [name=Melancia, barCode=335f6c1a-94ad-4351-a6df-3464967ff6e1, brand=Melaciosa, inStock=65, price=7.0, type=Frutas]
+Item [name=Leite, barCode=86040b2e-7882-41d5-9bc9-40076ea32d71, brand=Batavo, inStock=2567, price=1.0, type=Laticinios]
+Item [name=Energetico Redbull 2L, barCode=4a958fa7-caf6-4e03-8346-d7c4fb99a2fe, brand=Redbull, inStock=32, price=12.0, type=Bebidas]

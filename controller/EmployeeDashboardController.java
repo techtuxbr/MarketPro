@@ -4,6 +4,7 @@ import exceptions.NullData;
 import facade.ItemFacade;
 import factory.OrderFactory;
 import helper.NumberHelper;
+import helper.PDFHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -161,8 +162,11 @@ public class EmployeeDashboardController implements Initializable {
             paybackTextField.setText("");
             clearFields();
             Calendar c = Calendar.getInstance();
-            c.set(day,month,year);
+            c.set(Calendar.DAY_OF_MONTH,day);
+            c.set(Calendar.MONTH,month);
+            c.set(Calendar.YEAR,year);
             mainOrder.setDate(c);
+            PDFHelper.writeOrder(mainOrder,total,received,payback);
             mainOrder.getItemList().clear();
             updateTable();
         }else{

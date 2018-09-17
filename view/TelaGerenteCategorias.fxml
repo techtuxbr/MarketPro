@@ -29,7 +29,7 @@
                </effect></Rectangle>
             <ImageView fitHeight="88.0" fitWidth="200.0" layoutX="44.0" layoutY="25.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+                  <Image url="/resources/logo.png" />
                </image>
             </ImageView>
             <Text layoutX="87.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versão 1.0.1" />
@@ -55,27 +55,27 @@
             </Button>
             <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="225.0" layoutY="383.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-marca.png" />
+                  <Image url="/resources/icone-marca.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="34.0" fitWidth="45.0" layoutX="224.0" layoutY="165.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-produto.png" />
+                  <Image url="/resources/icone-produto.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="226.0" layoutY="487.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-usuario.png" />
+                  <Image url="/resources/icone-usuario.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="35.0" fitWidth="46.0" layoutX="225.0" layoutY="279.0">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-categoria.png" />
+                  <Image url="/resources/icone-categoria.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="255.0" fitWidth="580.0" layoutX="432.0" layoutY="256.0" opacity="0.11">
                <image>
-                  <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/Logo%20PGGQ.png" />
+                  <Image url="/resources/logo.png" />
                </image>
             </ImageView>
             <Text layoutX="16.0" layoutY="703.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright: Victor e Washington" />

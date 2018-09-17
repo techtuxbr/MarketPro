@@ -41,7 +41,7 @@
       </Text>
       <ImageView fitHeight="80.0" fitWidth="182.0" layoutX="207.0" layoutY="91.0">
          <image>
-            <Image url="@../../../../Documents/Interface%20Grafica%20Layout.png" />
+            <Image url="/resources/logo.png" />
          </image>
       </ImageView>
       <PasswordField fx:id="passwordField" layoutX="223.0" layoutY="225.0" />
