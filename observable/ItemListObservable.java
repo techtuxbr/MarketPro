@@ -52,6 +52,24 @@ public class ItemListObservable extends Observable {
 		}
 		return null;
 	}
+
+	public void decrementStock(String barcode,int amount){
+		Item i = this.getItemByBarcode(barcode);
+		if(i != null){
+			i.setInStock(i.getInStock()-amount);
+			setChanged();
+			notifyObservers();
+		}
+	}
+
+	public void incrementStock(String barcode,int amount){
+		Item i = this.getItemByBarcode(barcode);
+		if(i != null){
+			i.setInStock(i.getInStock()+amount);
+			setChanged();
+			notifyObservers();
+		}
+	}
 	
 	public void removeByBarcode(String barcode) {
 			Item i = this.getItemByBarcode(barcode);

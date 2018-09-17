@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.util.Locale;
 
+import exceptions.NullData;
 import exceptions.UsernameCollision;
 import facade.*;
 import factory.UserFactory;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import model.Category;
 import model.Order;
+import model.User;
 import singleton.UserListSingleton;
 
 import javax.swing.*;
@@ -52,6 +54,18 @@ public class Main extends Application{
 		CategoryFacade.allocateCategories();
 		BrandFacade.allocateBrands();
 		// área de testes
+		// Gerando admin automáticamente... para testes!
+		try {
+			User u = UserFacade.getByUsername("admin");
+			if(u == null){
+				UserFacade.registerUser(new UserFactory().createAdmin("admin","admin","admin"));
+			}
+		} catch (NullData nullData) {
+			// Ignorar
+			//nullData.printStackTrace();
+		} catch (UsernameCollision usernameCollision) {
+			// Usuário já existe
+		}
 		// Fim área de testes
 		launch(args);
 	}

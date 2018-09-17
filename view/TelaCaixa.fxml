@@ -4,7 +4,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashboardController">
    <children>
       <Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #dddbdb;">
          <children>
@@ -45,25 +44,13 @@
                   <Font name="Calibri Bold" size="53.0" />
                </font>
             </Text>
-            <TableView layoutX="346.0" layoutY="291.0" prefHeight="263.0" prefWidth="867.0">
-              <columns>
-                <TableColumn prefWidth="143.0" text="Item" />
-                <TableColumn prefWidth="723.0" text="Descrição" />
-              </columns>
-            </TableView>
             <Text fill="#ff0101" layoutX="43.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAIXA 01">
                <font>
                   <Font name="Calibri Bold" size="53.0" />
                </font>
             </Text>
-            <Text layoutX="46.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário:" />
-            <TextArea layoutX="44.0" layoutY="422.0" prefHeight="34.0" prefWidth="200.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </TextArea>
-            <Text layoutX="47.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
-            <DatePicker layoutX="44.0" layoutY="494.0" prefHeight="38.0" prefWidth="201.0" />
+            <Text layoutX="47.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
+            <DatePicker fx:id="dateField" layoutX="44.0" layoutY="442.0" prefHeight="38.0" prefWidth="201.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00a9ff" height="289.0" layoutX="13.0" layoutY="14.0" stroke="#ffffff00" strokeType="INSIDE" width="293.0">
                <effect>
                   <DropShadow />
@@ -79,10 +66,10 @@
                   <Image url="@../../../../Desktop/Sistema%20Supermercado/Imagens%20usadas/icone-produto.png" />
                </image>
             </ImageView>
-            <Button layoutX="1003.0" layoutY="566.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="102.0" text="Finalizar Venda" />
-            <Button layoutX="1113.0" layoutY="566.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="102.0" text="Cancelar Item" />
-            <TextField layoutX="416.0" layoutY="85.0" />
-            <TextField layoutX="1067.0" layoutY="85.0" />
+            <Button layoutX="1003.0" layoutY="566.0" mnemonicParsing="false" onAction="#endOrder" prefHeight="38.0" prefWidth="102.0" text="Finalizar Venda" />
+            <Button layoutX="1113.0" layoutY="566.0" mnemonicParsing="false" onAction="#cancelItem" prefHeight="38.0" prefWidth="102.0" text="Cancelar Item" />
+            <TextField fx:id="barcodeTextField" layoutX="416.0" layoutY="85.0" prefHeight="25.0" prefWidth="236.0" />
+            <TextField fx:id="amountTextField" layoutX="1067.0" layoutY="85.0" onKeyReleased="#setAmountTextField" />
             <Text layoutX="346.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:">
                <font>
                   <Font name="Calibri" size="20.0" />
@@ -93,7 +80,7 @@
                   <Font name="Calibri" size="20.0" />
                </font>
             </Text>
-            <TextField layoutX="818.0" layoutY="637.0" prefHeight="38.0" prefWidth="182.0">
+            <TextField fx:id="receivedTextField" layoutX="818.0" layoutY="637.0" onKeyReleased="#typingReceived" prefHeight="38.0" prefWidth="182.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -103,7 +90,7 @@
                   <Font name="Calibri Bold" size="22.0" />
                </font>
             </Text>
-            <TextField layoutX="463.0" layoutY="637.0" prefHeight="38.0" prefWidth="182.0">
+            <TextField fx:id="finalTotal" disable="true" editable="false" layoutX="463.0" layoutY="637.0" prefHeight="38.0" prefWidth="182.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -113,7 +100,7 @@
                   <Font name="Calibri Bold" size="22.0" />
                </font>
             </Text>
-            <TextField layoutX="1081.0" layoutY="637.0" prefHeight="38.0" prefWidth="182.0">
+            <TextField fx:id="paybackTextField" disable="true" editable="false" layoutX="1081.0" layoutY="637.0" prefHeight="38.0" prefWidth="182.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -123,26 +110,35 @@
                   <Font name="Calibri Bold" size="22.0" />
                </font>
             </Text>
-            <Button layoutX="346.0" layoutY="566.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="102.0" text="Calcular Troco" />
-            <TextField layoutX="349.0" layoutY="156.0" prefHeight="44.0" prefWidth="867.0" />
+            <Button layoutX="346.0" layoutY="566.0" mnemonicParsing="false" onAction="#addProductToOrderList" prefHeight="38.0" prefWidth="102.0" text="Adicionar item" />
+            <TextField fx:id="productNameField" disable="true" editable="false" layoutX="349.0" layoutY="156.0" prefHeight="44.0" prefWidth="867.0" />
             <Text layoutX="350.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto:">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
             </Text>
-            <TextField layoutX="349.0" layoutY="238.0" prefHeight="38.0" prefWidth="236.0" />
+            <TextField fx:id="valueTextField" disable="true" editable="false" layoutX="349.0" layoutY="238.0" prefHeight="38.0" prefWidth="236.0" />
             <Text layoutX="350.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Unitário:">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
             </Text>
-            <TextField layoutX="977.0" layoutY="238.0" prefHeight="38.0" prefWidth="236.0" />
+            <TextField fx:id="totalTextField" disable="true" layoutX="977.0" layoutY="238.0" prefHeight="38.0" prefWidth="236.0" />
             <Text layoutX="1117.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Total:">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
             </Text>
-            <Button layoutX="346.0" layoutY="31.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="102.0" text="Nova Venda " />
+            <Button layoutX="346.0" layoutY="31.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="38.0" prefWidth="102.0" text="Pesquisar item" />
+            <TableView fx:id="orderTable" layoutX="348.0" layoutY="291.0" prefHeight="270.0" prefWidth="867.0">
+              <columns>
+                <TableColumn fx:id="barcodeColumn" prefWidth="102.0" text="C. de barras" />
+                <TableColumn fx:id="nameColumn" prefWidth="279.0" text="Nome" />
+                  <TableColumn fx:id="priceColumn" prefWidth="156.0" text="Preço" />
+                  <TableColumn fx:id="amountColumn" prefWidth="192.0" text="Qtd." />
+                  <TableColumn fx:id="totalColumn" prefWidth="137.0" text="Total" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>

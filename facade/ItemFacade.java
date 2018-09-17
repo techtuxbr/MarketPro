@@ -43,6 +43,14 @@ public class ItemFacade {
 		return ItemListSingleton.getInstance().getItemByBarcode(id);
 	}
 
+	public static void decrementStock(String barcode, int amount){
+		ItemListSingleton.getInstance().decrementStock(barcode,amount);
+	}
+
+	public static void incrementStock(String barcode,  int amount){
+		ItemListSingleton.getInstance().incrementStock(barcode,amount);
+	}
+
 	public static List<Item> getByBrand(String brand) throws NullData {
 		if(brand == null) {
 			throw new NullData("O seu parametro id é nulo");

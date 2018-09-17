@@ -6,13 +6,18 @@ public class OrderItem implements Serializable{
 	
 	private Item item;
 	private float total;
-	private	float amount;
-	
-	public OrderItem(Item item, float total, float amount) {
-		super();
-		setItem(item);
-		setTotal(total);
-		setAmount(amount);
+	private	int amount;
+	private float price;
+	private String itemName;
+	private String itemBarcode;
+
+	public OrderItem(Item item,int amount) {
+		this.item = item;
+		this.total = item.getPrice() * amount;
+		this.amount = amount;
+		this.price = item.getPrice();
+		this.itemName = item.getName();
+		this.itemBarcode = item.getBarCode();
 	}
 
 	public Item getItem() {
@@ -28,17 +33,38 @@ public class OrderItem implements Serializable{
 	}
 
 	public void setTotal(float total) {
-		if (total>0)this.total = total;
-		else this.total = 0;
+		this.total = total;
 	}
 
-	public float getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
-		if (amount>0) this.amount = amount;
-		else this.amount = 0;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemBarcode() {
+		return itemBarcode;
+	}
+
+	public void setItemBarcode(String itemBarcode) {
+		this.itemBarcode = itemBarcode;
+	}
 }

@@ -9,12 +9,14 @@ public class Order implements Serializable {
 	private String id;
 	private Calendar date;
 	private List<OrderItem> itemList;
+	private float total;
 	
 	public Order(String id, Calendar date, List<OrderItem> itemList) {
 		super();
 		this.id = id;
 		setDate(date);
 		setItemList(itemList);
+		this.total = 0;
 	}
 
 	public String getId() {
@@ -42,4 +44,15 @@ public class Order implements Serializable {
 		this.itemList = itemList;
 	}
 
+	public float getTotal() {
+		float total = 0;
+		for(int i = 0; i < this.itemList.size();i++){
+			total += itemList.get(i).getTotal();
+		}
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
 }
