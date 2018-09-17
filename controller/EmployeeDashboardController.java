@@ -142,7 +142,7 @@ public class EmployeeDashboardController implements Initializable {
             JOptionPane.showMessageDialog(null,"Selecione uma data!");
             return;
         }
-        if(NumberHelper.isFloat(receivedTextField.getText())){
+        if(NumberHelper.isFloat(receivedTextField.getText()) && NumberHelper.isFloat(finalTotal.getText())){
             float total = Float.parseFloat(finalTotal.getText());
             float received = Float.parseFloat(receivedTextField.getText());
             int day = dateField.getValue().getDayOfMonth();
@@ -166,7 +166,7 @@ public class EmployeeDashboardController implements Initializable {
             mainOrder.getItemList().clear();
             updateTable();
         }else{
-            JOptionPane.showMessageDialog(null,"Insira um valor válido!!");
+            JOptionPane.showMessageDialog(null,"Insira um valor valido!!");
         }
     }
 }
